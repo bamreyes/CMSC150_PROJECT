@@ -93,9 +93,10 @@ body.sidebar-collapsed .main-content {
 }
 
 .tableau-wrapper {
-    padding: 0px 8px 32px 8px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
     flex: 1;
+    gap: 16px;
 }
+

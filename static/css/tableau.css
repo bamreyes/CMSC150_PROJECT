@@ -60,7 +60,6 @@
 
 .iteration-table-wrapper table {
     min-width: 600px;
-    width: max-content;
     border-collapse: collapse;
     user-select: none;
 }
