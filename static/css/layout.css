@@ -1,0 +1,72 @@
+/* --- FOUNDATION --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    font-family: var(--font-poppins);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 224px;
+    padding: 32px 16px;
+    transition: width 0.3s ease-in-out;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+body.sidebar-collapsed .sidebar {
+    width: 88px;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    margin-right: 24px;
+    height: 100vh;
+    min-width: 0;
+}
+
+.header {
+    padding: 24px 0px 0px 0px;
+    flex-shrink: 0;
+}
+
+/* --- SOLVER WRAPPER --- */
+.solver-wrapper {
+    padding: 8px 8px 16px 8px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;  /* CHANGED from flex-start */
+}
+
+.solver-main {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+
+.result-main {
+    display: flex;
+    flex: 0 1 420px;
+    flex-direction: column;
+    max-width: 480px;
+    min-width: 320px;
+}

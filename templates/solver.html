@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="solver-wrapper">
+
+    <div class="solver-main">
+        <form method="POST" id="projectSelection" class="selection-wrapper">
+            
+            <div class="selection-header">
+                <h2 class="projects-label">Projects<span class="projects-count">{{projectsCount}}</span></h2>
+                <div class="selection-bar">
+                    <input type="text" id="search-input" class="search-field" placeholder="Search projects">
+                    <button type="submit" class="solve-button">Solve</button>
+                </div>
+            </div>
+
+            
+            <table class="selection-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="selectAllCheckbox"></th>
+                        <td>Project</td>
+                        <td>CO<sub>2</sub></td>
+                        <td>NO</td>
+                        <td>SO<sub>2</sub></td>
+                        <td>CH<sub>4</sub></td>
+                        <td>PM<sub>2.5</sub></td>
+                        <td>VOC</td>
+                        <td>CO</td>
+                        <td>NH<sub>3</sub></td>
+                        <td>BC</td>
+                        <td>N<sub>2</sub>O</td>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for p in projects %}
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="{{p.Project}}" value="{{p.Project}}" name="projects" class="project-checkbox"
+                            {% if p.Project in last_selected %} checked {% endif%}>
+                        </td>
+                        <td><label for="{{p['Project']}}">{{ p["Project"] }} <br></label></td>
+                        <td>{{ p["CO2"] }}</td>
+                        <td>{{ p["NO"] }}</td>
+                        <td>{{ p["SO2"] }}</td>
+                        <td>{{ p["PM2_5"] }}</td>
+                        <td>{{ p["CH4"] }}</td>
+                        <td>{{ p["VOC"] }}</td>
+                        <td>{{ p["CO"] }}</td>
+                        <td>{{ p["NH3"] }}</td>
+                        <td>{{ p["BC"] }}</td>
+                        <td>{{ p["N2O"] }}</td>
+                        <td>{{ p["Cost"] }}</td>
+                    </tr>
+                    {% endfor %}                
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <div class="result-main">
+        <div id = "result" class="result-wrapper">
+            <div class="optimized-cost-wrapper {% if is_feasible == False %}infeasible{% endif %}">
+                {% if is_feasible == True or is_feasible == None %}<div class="cost-label">Optimized Cost</div>{% endif %}
+                <div class="optimized-cost-value">
+                    {% if is_feasible == None %}$ 0{% endif %}
+                    {% if is_feasible == True %}$ {{optimized_cost}}{% endif %}
+                    {% if is_feasible == False %}Infeasible{% endif%}
+
+                </div>
+                
+            </div>
+
+            <div class="result-label">Breakdown</div>
+            <div class="result-table-wrapper">
+                <table class="result-table">
+                    <thead>
+                    <tr>
+                        <th>Mitigation Project</th>
+                        <th>Units</th>
+                        <th>Cost</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% if is_feasible == True %}
+                    {% for p in table_data[0] %}
+                    {% if table_data[1][loop.index0] != 0 %}
+                    <tr>
+                        <td>{{ p.Project }}</td>
+                        <td>{{ table_data[1][loop.index0] }}</td>
+                        <td>{{ table_data[2][loop.index0] }}</td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    {% endif %}
+
+                    {% if is_feasible == False %}
+                    <tr> <td>Infeasible</td> </tr>
+                    {% endif %}
+                </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="tableau-wrapper">
+    <label for="cars">Choose Iteration</label>
+    <select id = "iterationSelection">
+        <option value="all">All Iterations</option>
+        {% for i in iterations %}
+        <option value={{loop.index0}}>Iteration {{loop.index0}}</option>
+        {% endfor %}
+    </select>
+    <!-- tableaus -->
+    <div id = "iterations-section" class="iterations-wrapper">
+        {% for iteration in iterations %}
+        <div id = "iteration-{{iteration.iteration}}" class="iteration-wrapper">
+            <h2 class="iteration-label">Iteration {{iteration.iteration}}<hr></h2>
+            
+            <div class="table-wrapper">
+                <h4>Tableau</h4>
+                <table class = "iteration-table">
+                    <thead>
+                    <tr>
+                        {% for label in iteration.tableau[0]%}
+                            <th>{{ label }}</th>
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in iteration.tableau[1:] %}
+                        <tr>
+                            {% for cell in row%}
+                            <td>{{cell}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <h4>Basic Solution</h4>
+                <table class = "iteration-table">
+                    <thead>
+                        <tr>
+                        {% for label in iteration.basicSolution[0]%}
+                            <th>{{ label }}</th>
+                        {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in iteration.basicSolution[1:] %}
+                        <tr>
+                            {% for cell in row%}
+                            <td>{{cell}}</td>
+                            {% endfor %}
+                        </tr>
+                        {% endfor %}                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            
+        {% endfor %}
+    </div>
+</div>
+
+ 
+
+{% endblock %}

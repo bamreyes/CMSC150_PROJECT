@@ -1,0 +1,83 @@
+.iterations-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.iterations-wrapper hr {
+    height: 1px;
+    border: none;
+    background-color: var(--primary-color)
+}
+
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+
+.table-wrapper table {
+    min-width: 600px;
+    width: max-content;
+    border-collapse: collapse;
+    user-select: none;
+}
+
+.iteration-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: var(--box-shadow-color);
+    padding: 24px 32px 32px 32px;
+    border-radius: 16px;
+}
+
+.iteration-label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font: var(--title-20);
+}
+
+.iteration-table {
+    border-spacing: 0;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 4px;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.iteration-table th,
+.iteration-table td {
+    width: 40px;
+}
+
+
+.iteration-table th:last-child,
+.iteration-table td:last-child {
+    max-width: 80px;
+    min-width: 40px;
+}
+
+.iteration-table thead tr {
+    background-color: #6db58122;
+    font: var(--title-12);
+}
+
+.iteration-table tr {
+    height: 28px;
+    vertical-align: middle;
+    text-align:center;
+}
+
+.iteration-table th,
+.iteration-table td {
+    width: 40px;
+}
+
+.iteration-table tbody tr:nth-child(even) {
+    background-color: rgb(246, 252, 246);
+}
