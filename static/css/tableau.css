@@ -59,21 +59,22 @@
 }
 
 .iteration-table-wrapper table {
-    min-width: 600px;
     border-collapse: collapse;
     user-select: none;
+    min-width: 600px;
+
 }
 
 .iteration-table {
     border-spacing: 0;
     padding: 4px;
-    width: 100%;
-    table-layout: fixed;
+    table-layout: auto; 
 }
 
 .iteration-table th,
 .iteration-table td {
-    width: 40px;
+    width: 40px;    
+    padding: 4px;
 }
 
 

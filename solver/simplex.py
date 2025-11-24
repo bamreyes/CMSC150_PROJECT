@@ -147,9 +147,8 @@ def solve(data):
     costs = [f"{round(projects[i]['Cost']*units[i], ROUND):,.2f}" for i in range(projects_count)]
     units = [round(i, ROUND) for i in units]
     optimized_cost = f"{float(iterations[-1]['basicSolution'][-1][-1]):,.2f}"
-
     
-    print(optimized_cost)   
+    print(optimized_cost)
 
     return {"projects": projects,
             "units":units,

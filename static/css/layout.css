@@ -2,7 +2,6 @@
 html, body {
     height: 100%;
     margin: 0;
-    
 }
 
 body {
@@ -12,10 +11,8 @@ body {
     color: var(--black-color);
 }
 
-/* --- SIDEBAR --- */
 .sidebar {
     position: fixed;
-    font-family: var(--font-poppins);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,7 +33,6 @@ body.sidebar-collapsed .main-content {
     margin-left: 80px; 
 }
 
-/* --- MAIN CONTENT --- */
 .main-content {
     display: flex;
     flex-direction: column;
@@ -47,6 +43,7 @@ body.sidebar-collapsed .main-content {
     margin-left: 216px;
     animation: fadein 0.3s ease-out 0s 1;
     transition: margin-left 0.3s ease-in-out;
+    height: 100%;
 }
 
 @keyframes fadein {
@@ -65,7 +62,21 @@ body.sidebar-collapsed .main-content {
     flex-shrink: 0;
 }
 
-/* --- SOLVER WRAPPER --- */
+.footer {
+    padding: 16px 0px 0px 0px;
+    flex-shrink: 0;
+}
+
+.home-wrapper {
+    padding: 8px 16px 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    min-height: 0;
+    align-items: stretch;
+}
+
 .solver-wrapper {
     padding: 8px 8px 16px 8px;
     display: flex;
@@ -73,7 +84,7 @@ body.sidebar-collapsed .main-content {
     gap: 16px;
     flex: 1;
     min-height: 0;
-    align-items: stretch;  /* CHANGED from flex-start */
+    align-items: stretch;
 }
 
 .solver-main {
