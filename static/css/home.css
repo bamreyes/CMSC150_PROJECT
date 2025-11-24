@@ -34,7 +34,7 @@
     line-height: 1.4;
 }
 
-.cta-button {
+.download-button {
     display: inline-block;
     padding: 16px 48px;
     border-radius: 48px;
@@ -47,7 +47,7 @@
     box-shadow: 0 8px 24px rgba(248, 200, 40, 0.3); 
 }
 
-.cta-button:hover {
+.download-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 32px rgba(248, 200, 40, 0.4);
 }

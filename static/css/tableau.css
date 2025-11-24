@@ -15,8 +15,26 @@
     flex-direction: column;
     gap: 16px;
     box-shadow: var(--box-shadow-color);
-    padding: 24px 32px 32px 32px;
+    padding: 16px 32px 24px 32px;
     border-radius: 16px;
+}
+
+.iteration-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.export-button {
+    background: var(--secondary-color);
+    font: var(--title-12);
+    color: white;
+    height: 40px;
+    width: 136px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(38, 116, 41, 0.128);
 }
 
 .iteration-label {

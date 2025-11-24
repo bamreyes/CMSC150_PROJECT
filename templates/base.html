@@ -22,7 +22,6 @@
   <nav class="sidebar {% if session.get('sidebar_collapsed') %}collapsed{% endif %}">
 
     <div class="with-selection">
-
       <ul class="tabs">
         <li>
           <a href="/" {% if request.path == '/' %} class="active" {% endif %}>
@@ -59,7 +58,6 @@
           </a>
         </li>
       </ul>
-
       {% if request.path == '/tableau' %}
       <div class="select-wrapper">
       <select id="iterationSelection" class="iteration-select">
@@ -72,7 +70,6 @@
       </select>
       </div>
       {% endif%}
-
     </div>
 
     <div id="sidebar-toggle" class="sidebar-toggle">

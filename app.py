@@ -16,6 +16,7 @@ app.config["SESSION_TYPE"] = "filesystem" # Store session data on the filesystem
 Session(app)
 
 SESSION_DIR = 'flask_session'
+PROJECTS_PATH = 'data/projects.json'
 
 def cleanup_session_folder():
     if os.path.exists(SESSION_DIR):
@@ -34,7 +35,7 @@ def home():
 @app.route('/solver', methods=['GET','POST'])
 def solver():
     # open projects
-    with open('data/projects.json') as file:
+    with open(PROJECTS_PATH) as file:
         projects = json.load(file)
     # POST
     if request.method == 'POST':
@@ -77,6 +78,29 @@ def tableau():
 def toggle_sidebar():
     session['sidebar_collapsed'] = not session.get('sidebar_collapsed', False)
     return jsonify({'collapsed': session['sidebar_collapsed']})
+
+import json
+import os
+from flask import request, jsonify
+
+# @app.route('/api/projects/add', methods=['POST'])
+# def add_project():
+#     try:
+#         new_project = request.get_json()
+
+#         with open(PROJECTS_PATH, 'r') as file:
+#             projects = json.load(file)
+            
+#         projects.append(new_project)
+        
+#         with open(PROJECTS_PATH, 'w') as file:
+#             json.dump(projects, file, indent=4)
+
+#         return jsonify({'success': True})
+
+#     except Exception as e:
+#         print(e)
+#         return jsonify({"error": str(e)})
 
 if __name__ == '__main__':
     app.run(debug=True) 

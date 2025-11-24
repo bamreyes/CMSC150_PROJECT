@@ -3,11 +3,15 @@
 {% block content %}
 
 <div class="tableau-wrapper">
-    <!-- tableaus -->
+
     <div id = "iterations-section" class="iterations-wrapper">
         {% for iteration in iterations %}
         <div id = "iteration-{{iteration.iteration}}" class="iteration-wrapper">
-            <h2 class="iteration-label">Iteration <span class="iteration-count">{{iteration.iteration}}</span><hr></h2>
+            <div class="iteration-header">
+                <h2 class="iteration-label">Iteration <span class="iteration-count">{{iteration.iteration}}</span></h2>
+                <button class="export-button" onclick="download(this)" id="export-button">Download CSV</button>
+            </div>
+            
         
             <span class="iteration-tableau-wrapper">
                 <h4>Tableau</h4>
