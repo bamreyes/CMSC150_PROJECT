@@ -139,12 +139,16 @@ def solve(data):
     dualProblem = getDualProblem(solutionMatrix)
     result = simplex(dualProblem,projects_count)
     
-    units = [round(i, ROUND) for i in result["solution"]]
+    #units = [round(i, ROUND) for i in result["solution"]]
+    units = result["solution"]
     iterations = result["iterations"]
 
     # Solve for cost
-    costs = [round(projects[i]['Cost']*units[i], ROUND) for i in range(projects_count)]
+    costs = [f"{round(projects[i]['Cost']*units[i], ROUND):,.2f}" for i in range(projects_count)]
+    units = [round(i, ROUND) for i in units]
     optimized_cost = f"{float(iterations[-1]['basicSolution'][-1][-1]):,.2f}"
+
+    
     print(optimized_cost)   
 
     return {"projects": projects,

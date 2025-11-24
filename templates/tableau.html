@@ -2,10 +2,8 @@
 
 {% block content %}
 
-
-
 <div class="tableau-wrapper">
-    <label for="cars">Choose Iteration</label>
+    <label for="iterationSelection">Choose Iteration</label>
     <select id = "iterationSelection">
         <option value="all">All Iterations</option>
         {% for i in iterations %}
@@ -16,50 +14,56 @@
     <div id = "iterations-section" class="iterations-wrapper">
         {% for iteration in iterations %}
         <div id = "iteration-{{iteration.iteration}}" class="iteration-wrapper">
-            <h2 class="iteration-label">Iteration {{iteration.iteration}}<hr></h2>
-            
-            <div class="table-wrapper">
+            <h2 class="iteration-label">Iteration <span class="iteration-count">{{iteration.iteration}}</span><hr></h2>
+        
+            <span class="iteration-tableau-wrapper">
                 <h4>Tableau</h4>
-                <table class = "iteration-table">
-                    <thead>
-                    <tr>
-                        {% for label in iteration.tableau[0]%}
-                            <th>{{ label }}</th>
-                        {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in iteration.tableau[1:] %}
+                <div class="iteration-table-wrapper">
+                    <table class = "iteration-table">
+                        <thead>
                         <tr>
-                            {% for cell in row%}
-                            <td>{{cell}}</td>
+                            {% for label in iteration.tableau[0]%}
+                                <th>{{ label }}</th>
                             {% endfor %}
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="table-wrapper">
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in iteration.tableau[1:] %}
+                            <tr>
+                                {% for cell in row%}
+                                <td>{{cell}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+
+            <span class="iteration-solution-wrapper">
                 <h4>Basic Solution</h4>
-                <table class = "iteration-table">
-                    <thead>
-                        <tr>
-                        {% for label in iteration.basicSolution[0]%}
-                            <th>{{ label }}</th>
-                        {% endfor %}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for row in iteration.basicSolution[1:] %}
-                        <tr>
-                            {% for cell in row%}
-                            <td>{{cell}}</td>
+                <div class="iteration-table-wrapper">
+                    <table class = "iteration-table">
+                        <thead>
+                            <tr>
+                            {% for label in iteration.basicSolution[0]%}
+                                <th>{{ label }}</th>
                             {% endfor %}
-                        </tr>
-                        {% endfor %}                      
-                    </tbody>
-                </table>
-            </div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for row in iteration.basicSolution[1:] %}
+                            <tr>
+                                {% for cell in row%}
+                                <td>{{cell}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}                      
+                        </tbody>
+                    </table>
+                </div>
+            </span>
+            
         </div>
             
         {% endfor %}

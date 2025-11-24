@@ -2,12 +2,14 @@
 html, body {
     height: 100%;
     margin: 0;
-    overflow: hidden;
+    
 }
 
 body {
     display: flex;
     flex-direction: row;
+    overflow-y: auto;
+    color: var(--black-color);
 }
 
 /* --- SIDEBAR --- */
@@ -33,9 +35,8 @@ body.sidebar-collapsed .sidebar {
     display: flex;
     flex-direction: column;
     flex: 1;
-    overflow-y: auto;
+    overflow: visible;  
     margin-right: 24px;
-    height: 100vh;
     min-width: 0;
 }
 
@@ -69,4 +70,12 @@ body.sidebar-collapsed .sidebar {
     flex-direction: column;
     max-width: 480px;
     min-width: 320px;
+}
+
+.tableau-wrapper {
+    padding: 0px 8px 32px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
 }

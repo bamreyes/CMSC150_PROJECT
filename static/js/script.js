@@ -46,20 +46,20 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(allIterations)
             if (selectedValue == "all") {
                 allIterations.forEach(function(iteration) {
-                    iteration.style.display = "block";
+                    iteration.style.display = "flex";
                 });
             } else {
                 allIterations.forEach(function(iteration) {
                     iteration.style.display = "none";
                 });
                 var show = document.getElementById('iteration-'+selectedValue);
-                show.style.display = "block";
+                show.style.display = "flex";
             }
 
         });
     }
 
-    document.querySelectorAll('.table-wrapper').forEach(wrapper => {
+    document.querySelectorAll('.iteration-table-wrapper').forEach(wrapper => {
         let isDown = false;
         let startX;
         let scrollLeft;

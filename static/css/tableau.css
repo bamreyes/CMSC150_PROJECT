@@ -1,50 +1,72 @@
 .iterations-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .iterations-wrapper hr {
     height: 1px;
     border: none;
-    background-color: var(--primary-color)
-}
-
-.table-wrapper {
-    display: flex;
-    flex-direction: column;
-    overflow-x: auto;
-    overflow-y: hidden;
-    width: 100%;
-}
-
-.table-wrapper table {
-    min-width: 600px;
-    width: max-content;
-    border-collapse: collapse;
-    user-select: none;
+    background-color: #eaeaea;
 }
 
 .iteration-wrapper {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 16px;
     box-shadow: var(--box-shadow-color);
     padding: 24px 32px 32px 32px;
     border-radius: 16px;
 }
 
 .iteration-label {
+    align-items: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 8px;
     font: var(--title-20);
 }
 
-.iteration-table {
-    border-spacing: 0;
+.iteration-count {
+    font-size: 12px;
+    color: var(--primary-variant-color);
+    border: 2px solid var(--primary-variant-color);
+    border-radius: 12px;
+    padding: 2px 8px;
+}
+
+.iteration-tableau-wrapper,
+.iteration-solution-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.iteration-tableau-wrapper h4,
+.iteration-solution-wrapper h4 {
+    font: var(--title-16);
+}
+
+.iteration-table-wrapper {
     border: 1px solid #eaeaea;
     border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px;
+    width: 100%;
+}
+
+.iteration-table-wrapper table {
+    min-width: 600px;
+    width: max-content;
+    border-collapse: collapse;
+    user-select: none;
+}
+
+.iteration-table {
+    border-spacing: 0;
     padding: 4px;
     width: 100%;
     table-layout: fixed;
@@ -76,6 +98,14 @@
 .iteration-table th,
 .iteration-table td {
     width: 40px;
+}
+
+.iteration-table thead tr th:first-child {
+    border-radius: 4px 0px 0px 0px;
+}
+
+.iteration-table thead tr th:last-child {
+    border-radius: 0px 4px 0px 0px;
 }
 
 .iteration-table tbody tr:nth-child(even) {
