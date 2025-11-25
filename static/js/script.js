@@ -1,23 +1,28 @@
+// Function for removing the 'iteration' when collapsing sidebar in the tableau page
 function setupIterationTextSync(iterationSelection, body) {
     
     function updateIterationText() {
-        const isCollapsed = body.classList.contains('sidebar-collapsed');
+        const isCollapsed = body.classList.contains('sidebar-collapsed'); // Check if sidebar is collapsed
 
+        // Update the option text depending on whether sidebar is collapsed
         if (iterationSelection) {
-            const options = iterationSelection.querySelectorAll('option');
-            options.forEach(option => {
-                if (option.value === 'all') {
+            const options = iterationSelection.querySelectorAll('option');  // Get options from iteration selection
+    
+            options.forEach(option => {  // Loop each options
+                
+                if (option.value === 'all') { // If option value is all iteration
                     option.textContent = isCollapsed ? 'All' : 'All Iterations';
                     return; 
                 }
                 const num = option.dataset.iterationNum; 
-
-                if (num) {
+                if (num) { // If option value is iteration {{num}}
                     option.textContent = isCollapsed ? num : `Iteration ${num}`;
                 }
             });
         }
     }
+
+    // Observe class changes on body to detect sidebar collapse
     const observer = new MutationObserver(mutationsList => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
@@ -30,7 +35,9 @@ function setupIterationTextSync(iterationSelection, body) {
     updateIterationText();
 }
 
+// For downloading csv
 function download(button) {
+
     const wrapper = button.closest('.iteration-wrapper');
     const iterationNum = wrapper.querySelector('.iteration-count').innerText;
     let content = [];
@@ -62,14 +69,15 @@ function download(button) {
     const link = document.createElement("a");
     link.setAttribute("href", url);
     link.setAttribute("download", `Iteration_${iterationNum}_Data.csv`);
-    link.style.display = "none";
-    document.body.appendChild(link);
+    document.body.appendChild(link);    
     link.click();
     
     document.body.removeChild(link);    
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Get elements
     const projectSelection = document.getElementById('projectSelection');
     const selectBtn = document.getElementById('selectAllCheckbox');
     const iterationSelection = document.getElementById('iterationSelection');
@@ -79,14 +87,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const buttons = document.querySelectorAll('.result-table-button');
 
+    // For toggling sidebar
     toggleSidebar.addEventListener('click', function() {
         body.classList.toggle('sidebar-collapsed');
-        fetch('/api/sidebar/toggle', {
+        fetch('/sidebar/toggle', { // Fetches the sidebar in app.py
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         })
     });
 
+    // For submitting selection
     if (projectSelection) {
         projectSelection.addEventListener('submit', function(event) {
 
@@ -95,13 +105,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // sends form
             const formData = new FormData(projectSelection);
-            //if (![...formData.entries()].length) return;
 
+            // Fetch a POST method to the solver
             fetch('/solver', {method:'POST', body: formData }).then(() => {location.reload(); });
 
         })
     }
 
+    // For changing tables in solver page
     if (tables) {
         tables.forEach((table, index) => {
             if (index === 0) {
@@ -113,13 +124,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    //For folder tabs in the table
     buttons.forEach((button, index) => {
         button.addEventListener('click', function() {
-            // Remove active from all buttons
-            buttons.forEach(btn => btn.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active')); // Remove active from all buttons
             
-            // Hide all tables
-            tables.forEach(table => table.style.display = 'none');
+            tables.forEach(table => table.style.display = 'none'); // Hide all tables
             
             // Show selected table and set button as active
             tables[index].style.display = 'flex';
@@ -127,57 +137,55 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-
+    // For selecting all/Deselecting all using the main checkbox
     if (selectBtn) {
-        const checkboxes = document.querySelectorAll('.project-checkbox');
+        const checkboxes = document.querySelectorAll('.project-checkbox'); // Get project checkboxes
 
+        // Syncs select all based of every checkboxes are checked
         function syncSelectAll() {
             const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-            selectBtn.checked = allChecked;
+            selectBtn.checked = allChecked; // Check/uncheck the main checkbox accordingly
         }
         syncSelectAll();
         
+        // When select all checkbox is clicked, update all individual checkboxes to checked
         selectBtn.addEventListener('change', function() {
             checkboxes.forEach(cb => cb.checked = this.checked);
         });
 
+        // When any of the checkboxes are changed, sync again
         checkboxes.forEach(cb => {
             cb.addEventListener('change', syncSelectAll);
         });
     }
 
+    // For changing the display of the iteration based on the selected iteration
     if (iterationSelection) {
-        document.getElementById('iterationSelection').addEventListener('change', function() {
-            const selectedValue = document.getElementById('iterationSelection').value;
-            console.log(selectedValue)
+        iterationSelection.addEventListener('change', function() { // Change on change
+            const selectedValue = iterationSelection.value; // GEt value
+            const allIterations = document.querySelectorAll('.iteration-wrapper'); // Get each iteration
 
-            allIterations = document.querySelectorAll('.iteration-wrapper');
-            console.log(allIterations)
-            if (selectedValue == "all") {
-                allIterations.forEach(function(iteration) {
-                    iteration.style.display = "flex";
-                });
-            } else {
-                allIterations.forEach(function(iteration) {
-                    iteration.style.display = "none";
-                });
-                var show = document.getElementById('iteration-'+selectedValue);
-                show.style.display = "flex";
+            if (selectedValue === "all") { // IF selected value is all, all iteration-wrapper's display is set to flex
+                allIterations.forEach(iteration => iteration.style.display = "flex");
+            } else { // Else, change to none, and set the iteration id to display
+                allIterations.forEach(iteration => iteration.style.display = "none");
+                const show = document.getElementById('iteration-' + selectedValue);
+                if (show) show.style.display = "flex";
             }
-
         });
 
         setupIterationTextSync(iterationSelection, body);
     }
 
+    // For search
     if (search) {
-        search.addEventListener('input', function() {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('.selection-table tbody tr');
+        search.addEventListener('input', function() { // Listener for every input in the text field
+            const filter = this.value.toLowerCase(); // Get search value
+            const rows = document.querySelectorAll('.selection-table tbody tr'); // Get project row
             
             rows.forEach(row => {
-                const projectName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                if (projectName.includes(filter)) {
+                const projectName = row.querySelector('td:nth-child(2)').textContent.toLowerCase(); // Get project name
+                if (projectName.includes(filter)) { // If filter is a substring of the project name
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
@@ -186,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // For scrolling the table
     document.querySelectorAll('.iteration-table-wrapper').forEach(wrapper => {
         let isDown = false;
         let startX;

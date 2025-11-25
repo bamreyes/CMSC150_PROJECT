@@ -1,3 +1,4 @@
+/* --- ITERATIONS WRAPPER --- */
 .iterations-wrapper {
     display: flex;
     flex-direction: column;
@@ -10,6 +11,7 @@
     background-color: #eaeaea;
 }
 
+/* --- INDIVIDUAL ITERATION --- */
 .iteration-wrapper {
     display: flex;
     flex-direction: column;
@@ -25,6 +27,7 @@
     justify-content: space-between;
 }
 
+/* --- BUTTONS --- */
 .export-button {
     background: var(--primary-color);
     font: var(--title-12);
@@ -37,10 +40,11 @@
     box-shadow: 0 2px 8px rgba(38, 116, 41, 0.128);
 }
 
+/* --- ITERATION LABELS --- */
 .iteration-label {
-    align-items: center;
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 8px;
     font: var(--title-20);
 }
@@ -53,6 +57,7 @@
     padding: 2px 8px;
 }
 
+/* --- TABLEAU & SOLUTION WRAPPERS --- */
 .iteration-tableau-wrapper,
 .iteration-solution-wrapper {
     display: flex;
@@ -65,13 +70,14 @@
     font: var(--title-16);
 }
 
+/* --- ITERATION TABLE --- */
 .iteration-table-wrapper {
-    border: 1px solid #eaeaea;
-    border-radius: 8px;
     display: flex;
     flex-direction: column;
     overflow-x: auto;
     overflow-y: hidden;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
     padding: 4px;
     width: 100%;
 }
@@ -80,26 +86,25 @@
     border-collapse: collapse;
     user-select: none;
     min-width: 600px;
-
 }
 
 .iteration-table {
+    table-layout: auto;
     border-spacing: 0;
     padding: 4px;
-    table-layout: auto; 
 }
 
 .iteration-table th,
 .iteration-table td {
-    width: 40px;    
+    width: 40px;
     padding: 4px;
+    text-align: center;
 }
-
 
 .iteration-table th:last-child,
 .iteration-table td:last-child {
-    max-width: 80px;
     min-width: 40px;
+    max-width: 80px;
 }
 
 .iteration-table thead tr {
@@ -110,22 +115,16 @@
 .iteration-table tr {
     height: 28px;
     vertical-align: middle;
-    text-align:center;
-}
-
-.iteration-table th,
-.iteration-table td {
-    width: 40px;
 }
 
 .iteration-table thead tr th:first-child {
-    border-radius: 4px 0px 0px 0px;
+    border-radius: 4px 0 0 0;
 }
 
 .iteration-table thead tr th:last-child {
-    border-radius: 0px 4px 0px 0px;
+    border-radius: 0 4px 0 0;
 }
 
 .iteration-table tbody tr:nth-child(even) {
-    background-color: rgb(246, 252, 246);
+    background-color: #f6fcf6;
 }

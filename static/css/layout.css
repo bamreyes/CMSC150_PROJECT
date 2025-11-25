@@ -11,6 +11,7 @@ body {
     color: var(--black-color);
 }
 
+/* --- SIDEBAR --- */
 .sidebar {
     position: fixed;
     display: flex;
@@ -28,24 +29,24 @@ body.sidebar-collapsed .sidebar {
     width: 88px;
 }
 
-body.sidebar-collapsed .main-content {
-    transition: margin-left 0.3s ease-in-out;
-    margin-left: 80px; 
-}
-
+/* --- MAIN CONTENT --- */
 .main-content {
     display: flex;
     flex-direction: column;
     flex: 1;
-    overflow: visible;  
+    overflow: visible;
     margin-right: 24px;
     min-width: 0;
     margin-left: 216px;
     animation: fadein 0.3s ease-out 0s 1;
     transition: margin-left 0.3s ease-in-out;
-    height: 100%;
 }
 
+body.sidebar-collapsed .main-content {
+    margin-left: 80px;
+}
+
+/* --- ANIMATIONS --- */
 @keyframes fadein {
     from {
         opacity: 0.5;
@@ -57,16 +58,18 @@ body.sidebar-collapsed .main-content {
     }
 }
 
+/* --- HEADER & FOOTER --- */
 .header {
-    padding: 24px 0px 0px 0px;
+    padding: 24px 0 0 0;
     flex-shrink: 0;
 }
 
 .footer {
-    padding: 16px 0px 0px 0px;
+    padding: 16px 0 0 0;
     flex-shrink: 0;
 }
 
+/* --- WRAPPERS --- */
 .home-wrapper {
     padding: 8px 16px 16px 8px;
     display: flex;
@@ -87,6 +90,14 @@ body.sidebar-collapsed .main-content {
     align-items: stretch;
 }
 
+.tableau-wrapper {
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 16px;
+}
+
 .solver-main {
     display: flex;
     flex: 2;
@@ -102,12 +113,3 @@ body.sidebar-collapsed .main-content {
     max-width: 480px;
     min-width: 320px;
 }
-
-.tableau-wrapper {
-    padding: 8px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 16px;
-}
-

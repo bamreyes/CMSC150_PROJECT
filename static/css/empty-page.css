@@ -17,15 +17,19 @@
     animation: changeopacity 3s ease-in-out infinite;
 }
 
-@keyframes changeopacity {
-    0% {opacity: 0.5}
-    50% {opacity: 0.35}
-    100% {opacity: 0.5}
-}
+
 
 .empty-page h1 {
     font-size: 1.8rem;
     font-family: var(--font-inter);
     font-weight: 500;
     margin: 0;
+}
+
+
+/* --- ANIMATION --- */
+@keyframes changeopacity {
+    0% {opacity: 0.5}
+    50% {opacity: 0.35}
+    100% {opacity: 0.5}
 }

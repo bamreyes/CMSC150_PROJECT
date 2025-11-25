@@ -1,44 +1,49 @@
-.tabs, 
+/* --- TABS & SIDEBAR TOGGLE --- */
+.tabs,
 .sidebar-toggle {
     display: flex;
     flex-direction: column;
     gap: 8px;
     padding: 4px;
-    margin: 0px;
+    margin: 0;
     background: linear-gradient(to bottom, var(--primary-color) 0%, var(--primary-variant-color) 100%);
     box-shadow: 0px 4px 10px 1px rgba(0, 8, 0, 0.05);
     list-style-type: none;
     border-radius: 14px;
 }
 
-.with-selection {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.sidebar-toggle {
+    width: 48px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
 }
 
 .sidebar-toggle:hover {
     cursor: pointer;
 }
 
+/* --- SCROLLBAR --- */
 .sidebar::-webkit-scrollbar {
     display: none;
 }
 
+/* --- TABS LIST ITEMS --- */
 .tabs li {
     display: flex;
     flex-direction: row;
     height: 48px;
     font: var(--title-14);
 }
+
 .tabs li a {
     display: inline-flex;
     align-items: center;
     width: 100%;
     text-decoration: none;
-    color: white;   
+    color: white;
     border-radius: 10px;
-    padding: 0px 4px;
+    padding: 0 4px;
     gap: 4px;
     fill: white;
     position: relative;
@@ -59,6 +64,33 @@
     fill: var(--black-color);
 }
 
+body.sidebar-collapsed .tabs li a {
+    justify-content: center;
+}
+
+/* --- ICONS --- */
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+}
+
+/* --- SIDEBAR COLLAPSE --- */
+body.sidebar-collapsed .link-text {
+    display: none;
+}
+
+
+/* --- WITH SELECTION PRSENT     --- */
+.with-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* --- ANIMATION --- */
 @keyframes shine {
     from {
         background-position: 0% 0%;
@@ -66,27 +98,4 @@
     to {
         background-position: 200% 0%;
     }
-}
-
-body.sidebar-collapsed .tabs li a {
-    justify-content: center; 
-}
-
-.sidebar-toggle {
-    width: 48px;
-    height: 48px;
-    justify-content: center;
-    align-items: center;
-}
-
-.icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 36px;
-    width: 36px;
-}
-
-body.sidebar-collapsed .link-text {
-    display: none;
 }

@@ -1,3 +1,4 @@
+/* --- SELECTION GROUP --- */
 .with-selection {
     display: flex;
     flex-direction: column;
@@ -9,26 +10,24 @@
     width: 100%;
 }
 
+/* --- ITERATION SELECT --- */
 .iteration-select {
     width: 100%;
     min-width: 48px;
     min-height: 48px;
     border: 2px solid var(--primary-color);
     border-radius: 14px;
-    
-    padding: 8px 24px 8px 8px; 
-    
+    padding: 8px 24px 8px 8px;
     font: var(--title-14);
-
+    appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
-    appearance: none;
     background-color: transparent;
 
+    /* Arrow icon */
     background-image: url("data:image/svg+xml;utf8,<svg fill='%23007e5d' version='1.1' id='Capa_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' viewBox='0 0 30.727 30.727' xml:space='preserve'><g><path d='M29.994,10.183L15.363,24.812L0.733,10.184c-0.977-0.978-0.977-2.561,0-3.536c0.977-0.977,2.559-0.976,3.536,0l11.095,11.093L26.461,6.647c0.977-0.976,2.559-0.976,3.535,0C30.971,7.624,30.971,9.206,29.994,10.183z'/></g></svg>");
-    
     background-repeat: no-repeat;
-    background-position: right 12px center; 
+    background-position: right 12px center;
     background-size: 8px 8px;
 
     color: var(--primary-color);
@@ -36,21 +35,22 @@
     animation: select-fadein 0.3s ease-out 0s 1;
 }
 
-@keyframes select-fadein {
+/* --- FOCUS STYLE --- */
+.iteration-select:focus {
+    border-color: var(--primary-color);
+    outline: 1px solid var(--primary-color);
+    transition: border-color 0.2s ease;
+}
 
+
+/* --- ANIMATION --- */
+@keyframes select-fadein {
     from {
         opacity: 0.5;
         transform: translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.iteration-select:focus {
-    border-color: var(--primary-color); 
-    outline: 1px solid var(--primary-color);
-    transition: border-color 0.2s ease;
 }

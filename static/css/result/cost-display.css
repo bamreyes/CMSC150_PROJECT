@@ -1,3 +1,4 @@
+/* ---OPTIMIZED COsT CARD --- */
 .optimized-cost-wrapper {
     display: flex;
     flex-direction: column;
@@ -12,12 +13,6 @@
     animation: sweep 7s ease-in-out;
     flex-shrink: 0;
     margin-bottom: 12px;
-}
-
-@keyframes sweep {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 0%; }
-    100% { background-position: 0% 0%; }
 }
 
 .optimized-cost-wrapper.infeasible {
@@ -39,4 +34,12 @@
 .optimized-cost-value {
     font-family: var(--font-inter);
     font-size: 48px;
+}
+
+/* --- ANIMATION --- */
+
+@keyframes sweep {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 0%; }
+    100% { background-position: 0% 0%; }
 }

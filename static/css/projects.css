@@ -1,3 +1,4 @@
+/* --- SELECTION WRAPPER --- */
 .selection-wrapper {
     width: 100%;
     max-width: fit-content;
@@ -9,15 +10,16 @@
     padding: 16px;
     box-shadow: var(--box-shadow-color);
     flex: 1;
-    min-height: 0; 
+    min-height: 0;
     overflow: hidden;
 }
 
+/* --- SELECTION HEADER --- */
 .selection-header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0px 8px;
+    padding: 0 8px;
     flex-shrink: 0;
 }
 
@@ -58,26 +60,28 @@
     border-radius: 10px;
     border: 1px solid #dcdddc;
     width: 200px;
-    padding: 0px 12px;
+    padding: 0 12px;
 }
 
+/* --- SELECTION TABLE --- */
 .selection-table {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
     border-collapse: separate;
     border-spacing: 0;
     border: 1px solid #eaeaea;
     border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;  
 }
 
 .selection-table thead {
+    display: table;
+    width: 100%;
     border-left: 3px solid #6db58122;
     border-radius: 8px;
-    flex-shrink: 0; 
-    
+    flex-shrink: 0;
 }
 
 .selection-table tbody {
@@ -102,13 +106,12 @@
 
 .selection-table th,
 .selection-table td {
-    width: 48px;
     padding: 8px 12px;
+    width: 48px;
 }
 
 .selection-table th:first-child,
 .selection-table td:first-child {
-    width: 48px;
     text-align: center;
 }
 
@@ -123,11 +126,11 @@
 }
 
 .selection-table thead tr th:first-child {
-    border-radius: 4px 0px 0px 0px;
+    border-radius: 4px 0 0 0;
 }
 
 .selection-table thead tr th:last-child {
-    border-radius: 0px 4px 0px 0px;
+    border-radius: 0 4px 0 0;
 }
 
 .selection-table tbody tr:nth-child(even) {
@@ -142,6 +145,7 @@
     background: rgba(0, 126, 93, 0.1);
 }
 
+/* --- CHECKBOXES --- */
 input[type="checkbox"] {
     accent-color: var(--primary-color);
     vertical-align: middle;
